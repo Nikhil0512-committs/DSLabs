@@ -1,49 +1,54 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int main() {
-    int sparseMatrix[4][4] = {
-        {1, 0, 0, 0},
-        {2, 3, 0, 0},
-        {4, 5, 6, 0},
-        {7, 8, 9, 10}
-		
-	};
-
-    int size = 0;
-
-   
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (sparseMatrix[i][j] != 0) {
-                size++;
-            }
-        }
-    }
-
-    int compactMatrix[3][size]; 
-    int k = 0;
-
-  
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (sparseMatrix[i][j] != 0) {
-                compactMatrix[0][k] = i;           
-                compactMatrix[1][k] = j;             
-                compactMatrix[2][k] = sparseMatrix[i][j];  
-                k++;
-            }
-        }
-    }
-
-    
-    cout << "Compact representation of sparse matrix :" << endl;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < size; j++) {
-            cout << compactMatrix[i][j] << " ";
+int main(){
+    int a[4][4]={3,2,6,7,0,6,6,8,0,0,2,4,0,0,0,1};
+    cout << "The given matrix is: " << endl;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            cout << a[i][j];
         }
         cout << endl;
     }
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    int z, nz=0;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(a[i][j]==0){
+                z++;
+            }else{
+                nz++;
+            }
+
+        }
+    }
+
+    if(nz>z){
+        int s[nz][3];
+        int k=0;
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                if(a[i][j]!=0){
+                    s[k][0] = i;
+                    s[k][1]  = j;
+                    s[k][2] = a[i][j];
+                    k++;
+                }
+            }
+        }
+
+        for(int i =0;i<nz;i++){
+        for(int j=0;j<3;j++){
+            cout << s[i][j];
+        }
+        cout << endl;
+    }
+    }
+
+    
+
 
     return 0;
 }
