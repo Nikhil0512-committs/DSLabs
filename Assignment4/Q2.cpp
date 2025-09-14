@@ -37,7 +37,7 @@ void dequeue() {
     if (front == rear) {
         front = rear = -1;
     } else {
-        front++;
+        front=(front+1)%MAX;
     }
 }
 
@@ -56,11 +56,14 @@ void display() {
         cout << "Queue is empty!" << endl;
         return;
     }
-    cout << "Queue elements: ";
-    for (int i = front; i <= rear; i++) {
-        cout << queue[i] << " ";
+  printf("Queue elements: ");
+    int i = front;
+    while (1) {
+        printf("%d ", queue[i]);
+        if (i == rear) break;
+        i = (i + 1) % SIZE;
     }
-    cout << endl;
+    printf("\n");
 }
 
 int main() {
